@@ -1,0 +1,12 @@
+<%  if ( success && success.length > 0 ) { %>
+	<div class="alert alert-success alert-dismissible fade show " role="alert" id="successAlert">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <strong> Success !</strong> <%= success %> 
+    </div>
+<% } %>
+<% if ( errors && errors.length) { %>
+	<div class="alert alert-danger alert-dismissible fade show " role="alert" id="errorsAlert">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <strong> Error !</strong> <%= errors %>
+    </div>
+<% } %>

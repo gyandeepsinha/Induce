@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		<section="usersModalForm">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-right mb-3"><br>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#usersModal" id="btnAddUser">
+							Add User
+						</button>
+					</div>
+					<div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="usersModalLabel" aria-hidden="true">
+						 <div class="modal-dialog modal-xl">
+        					<div class="modal-content">
+        						 <!-- Modal Header -->
+					            <div class="modal-header">
+					            	<h4 class="modal-title" id="usersModalLabel">User Form</h4>
+					                <button type="button" class="close" data-dismiss="modal">
+					                    <span aria-hidden="true">&times;</span>
+					                    <span class="sr-only">Close</span>
+					                </button>
+					            </div>
+					            <!-- Modal Body -->
+					            <div class="modal-body">					                
+					                <form class="form-horizontal" role="form" method="post" id="usersForm" action="/addUser" enctype="multipart/form-data">
+					                	<div class="form-group">
+						                	<div class="row">
+						                		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                			<label  class="control-label" for="lblError" id="lblError"></label>
+						                		</div>
+						                	</div>
+						                </div>
+					                	<div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtName">Name ( First and Last Name)</label>
+						                 			 <input type="text" class="form-control" id="txtName" name="txtName" placeholder="Name" required />
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">						                 	 <label  class="control-label" for="txtEmail">Email</label>
+						                 			<input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email" required />	
+						                 		</div>						                 		
+							                </div>
+						                </div>
+						                 <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						               				<label  class="control-label" for="txtpassword">Password</label>
+						                 			<input type="password" class="form-control" id="txtpassword" name="txtpassword" placeholder="Password" required />
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">	 
+						                 			<label  class="control-label" for="txtConfirmPassword">Confirm Password</label>
+						                 			<input type="password" class="form-control" id="txtConfirmPassword" name="txtConfirmPassword" placeholder="Confirm Password" required />
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="imgProfilePicture">Profile Picture</label>
+						                 			<input type="file" class="form-control-file" id="imgProfilePicture" name="imgProfilePicture" required="">	
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="rdbUsersStatus">User Status</label><br/>
+						                 			<input type="radio" name="rdbUsersStatus" value="Active" checked>Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							                        <input type="radio" name="rdbUsersStatus" value="Inactive">Inactive
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                	<div class="row">
+						                		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                			<img class="img-thumbnail" alt="Profile Picture" id="imgProfilePictureTag" width="100px" height="200px" src="../Images/users/sampleUserPhoto.png"> 
+						                		</div>
+						                		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                			<label  class="col-sm-2 control-label" for="drpUsers">Role</label>
+						                			<select class="form-control selectpicker"" id="drpUsers" name="drpUsers">
+												    	<option value="Admin">Admin</option>
+												    	<option value="User">User</option>
+												  	</select>
+						                		</div>
+						                	</div>
+						                </div>
+						                <div class="row">
+						                	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                		File Format | <span style="color:lightseagreen;"> JPEG JPG PNG </span>
+						                	</div>
+						                	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                		File Size | <span style="color:lightseagreen;"> Less than or equal to 1MB
+						                	</div>
+						                </div>
+						                <!-- Modal Footer -->
+							            <div class="modal-footer">
+							                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+							                <button type="submit" class="btn btn-secondary" id="btnAddUserModal">Add User</button>
+							            </div>
+					                </form>
+					            </div>					            
+        					</div>
+        				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section="UsersDatatable">
+			<div class="container">
+				<% include partials/message %>
+				<table id="tblUsersDetails" class="display wrap cell-border" style="width:100%">
+			        <thead>
+			            <tr>
+			            	<th>Picture</th>
+			                <th>Name</th>
+			                <th>Role</th>
+			                <th>Status</th>
+			                <th>Edit</th>
+			                <th>Remove</th>
+			            </tr>
+			        </thead>
+			        <tbody><% for ( var i=0;i<userDetails.length;i++ ) { %>		        	
+			            <tr>
+			                <td style="text-align:center;"><image src='../Images/users/<%= userDetails[i].image %>' style="height:30px;width:30px;"></image></td>
+			                <td><%= userDetails[i].name %></td>
+			                <td><%= userDetails[i].userRole %></td>
+			                <td><%= userDetails[i].userStatus %></td>
+			                <td><a href="#" data-id="<%=userDetails[i].userId%>" class="btnUserEdit" data-toggle="modal" data-target="#usersModal"><image src="../css/edit.png"></image></a></td>
+			                <td><a href="#" data-id="<%=userDetails[i].userId%>" class="btnremoveUser"><image src="../css/remove.png"></image></a></td>
+			            </tr><% } %>
+			        </tbody>
+		    	</table>
+			</div>
+		</section>
+	</body>
+	<% include partials/script %>
+	<script type="text/javascript" src="../users.js"></script>
+</html>

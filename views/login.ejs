@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<style type="text/css">
+			.row{
+			    margin: 10%;
+			    border-width: thick;
+			    border-color: #6f6f6f;
+			}
+		</style>		
+	</head>
+	<body>
+		<div class="container">
+			<div class="row align-items-center card card-block">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style=margin:5%;>
+					<form class="form-horizontal" role="form" method="post" id="loginForm" action="/userLogin" >
+						<div class="form-group">
+							<h4>Login</h4><% include partials/message %>
+						</div>
+						<div class="form-group">
+							 <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Id" required />
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password" required />
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-info" id="btnLoginUser" style='width:100%;'>Login</button>
+						</div>
+					</form>					
+				</div>
+			</div>
+		</div>
+	</body>	
+	<% include partials/script %>
+</html>

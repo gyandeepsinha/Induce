@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		<section="applicationModalForam">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-right mb-3"><br>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#applicationModal" id="btnAddApplication">Add Application
+						</button>
+					</div>
+					<div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="applicationModalLabel" aria-hidden="true">
+						 <div class="modal-dialog modal-xl">
+        					<div class="modal-content">
+        						 <!-- Modal Header -->
+					            <div class="modal-header">
+					            	<h4 class="modal-title" id="applicationModalLabel">Application Form</h4>
+					                <button type="button" class="close" data-dismiss="modal">
+					                    <span aria-hidden="true">&times;</span>
+					                    <span class="sr-only">Close</span>
+					                </button>
+					            </div>
+					            <!-- Modal Body -->
+					            <div class="modal-body">					                
+					                <form class="form-horizontal" role="form" method="post" id="applicationForm" action="" enctype="multipart/form-data">
+					                	<div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtAppName">Application Name</label>
+						                 			 <input type="text" class="form-control" id="txtAppName" name="txtAppName" placeholder="Application Name" required />
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">						                 	 <label  class="control-label" for="txtAppPackage">Application Package</label>
+						                 			<input type="text" class="form-control" id="txtAppPackage" name="txtAppPackage" placeholder="Application Package" required />	
+						                 		</div>						                 		
+							                </div>
+						                </div>
+						                 <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						               				<label  class="control-label" for="txtAppUrl">Application URL</label>
+						                 			<input type="text" class="form-control" id="txtAppUrl" name="txtAppUrl" placeholder="Application URL" required />
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">	 
+						                 			<label  class="control-label" for="txtAdvId">Advertiesment ID</label>			
+						                 			<label><input type="checkbox" id="chkAdvId" name="chkAdvId" value="1"></label>
+						                 			<input type="text" class="form-control" id="txtAdvId" name="txtAdvId" placeholder="Advertiesment ID" required />
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtBannerId">Banner ID</label>
+						                 			<label><input type="checkbox" id="chkBanId" name="chkBanId" value="1"></label>
+						                 			<input type="text" class="form-control" id="txtBannerId" name="txtBannerId" placeholder="Banner ID" required />	
+
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">	
+						                 			<label  class="control-label" for="txtIntId">Interstitial ID</label>
+						                 			<label><input type="checkbox" id="chkInsId" name="chkInsId" value="1"></label>
+						                 			 <input type="text" class="form-control" id="txtIntId" name="txtIntId" placeholder="Interstitial ID" required />						                 			 
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtRewId">Reward ID</label>
+						                 			<label><input type="checkbox" id="chkRewId" name="chkRewId" value="1"></label>
+						                 			<input type="text" class="form-control" id="txtRewId" name="txtRewId" placeholder="Reward ID" required />
+						                 			</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtNatId">Native ID</label>
+						                 			<label><input type="checkbox" id="chkNatId" name="chkNatId" value="1"></label>
+						                 			 <input type="text" class="form-control" id="txtNatId" name="txtNatId" placeholder="Native ID" required />
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtAppVersion">Application Version</label>
+						                 			<input type="text" class="form-control" id="txtAppVersion" name="txtAppVersion" placeholder="Application Version" required />	
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="rdbAppStatus">Application Status</label><br/>
+						                 			<input type="radio" id="rdbAppStatus" name="rdbAppStatus" value="1" checked>Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							                        <input type="radio" id="rdbAppStatus" name="rdbAppStatus" value="0">Inactive	
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<label  class="control-label" for="txtAppLogo">Application Logo</label>
+						                 			<input type="file" class="form-control-file" id="txtAppLogo" name="txtAppLogo">
+						                 		</div>
+						                 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							                 			<label  class="control-label" for="txtBanImage">Banner Image</label>
+							                 			<input type="file" class="form-control-file" id="txtBanImage" name="txtBanImage">
+						                 			</div>
+						                 		</div>
+							                </div>
+						                </div>
+						                <div class="row">
+						                	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                		File Format | <span style="color:lightseagreen;"> JPEG JPG PNG </span>
+						                	</div>
+						                	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						                		File Size | <span style="color:lightseagreen;"> Less than or equal to 1MB
+						                	</div>
+						                </div>
+						                <!-- Modal Footer -->
+							            <div class="modal-footer">
+							                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+							                <button type="submit" class="btn btn-secondary" id="btnAddapplicationModal">Add Application</button>
+							            </div>
+					                </form>
+					            </div>					            
+        					</div>
+        				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section="ApplicationDatatable">
+			<div class="container">
+				<% include partials/message %>
+				<table id="tblApplicationDetails" class="display wrap cell-border" style="width:100%">
+			        <thead>
+			            <tr>
+			            	<th>Logo</th>
+			            	<th>Name</th>
+			                <th>Status</th>
+			                <th>Edit</th>
+			                <th>Remove</th>
+			            </tr>
+			        </thead>
+			        <tbody><% for ( var i=0;i<allApplication.length;i++ ) { %>		        	
+			            <tr>
+			                <td><image src='../Images/application/appLogo/<%= allApplication[i].appLogo %>' style="height:20px;width:20px;"></image></td>	
+			                <td><%= allApplication[i].appName %></td>
+			                <td><%= allApplication[i].appStatus %></td>
+			                <td><a href="#" data-id="<%=allApplication[i].appId%>" class="btnApplicationEdit" data-toggle="modal" data-target="#applicationModal"><image src="../css/edit.png"></image></a></td>
+			                <td><a href="#" data-id="<%=allApplication[i].appId%>" class="btnRemoveApplication"><image src="../css/remove.png"></image></a></td>
+			            </tr><% } %>
+			        </tbody>
+		    	</table>
+			</div>
+		</section>
+	</body>
+	<% include partials/script %>
+	<script type="text/javascript" src="../application.js"></script>
+	<script type="text/javascript" src="../js/bootbox.min.js"></script>
+</html>

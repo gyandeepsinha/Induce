@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		<section="statusModalForam">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-right mb-3"><br>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#statusModal" id="btnAddstatus">Add Status
+						</button>
+					</div>
+					<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="statusModalLabel" aria-hidden="true">
+						 <div class="modal-dialog">
+        					<div class="modal-content">
+        						 <!-- Modal Header -->
+					            <div class="modal-header">
+					            	<h4 class="modal-title" id="statusModalLabel">Status Form</h4>
+					                <button type="button" class="close" data-dismiss="modal">
+					                    <span aria-hidden="true">&times;</span>
+					                    <span class="sr-only">Close</span>
+					                </button>
+					            </div>
+					            <!-- Modal Body -->
+					            <div class="modal-body">					                
+					                <form class="form-horizontal" role="form" method="post" id="statusForm" action="" enctype="multipart/form-data">
+					                	<div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="drpLanguage">Language</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <select class="form-control selectpicker"" id="drpLanguage" name="drpLanguage" required>
+							                        	<option value="">Select Language</option>
+							                        	<% for (var i=0;i<allLanguage.length;i++ ) { %>
+													    	<option value="<%=allLanguage[i].langId%>"><%=allLanguage[i].langDisplayName%></option>
+													    <% } %>
+												  	</select>
+												  	<input type="hidden" id="txtLangId" name="txtLangId"/>
+							                    </div>
+							                </div>
+						                </div>
+						                 <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="drpCategory">Category</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <select class="form-control selectpicker"" id="drpCategory" name="drpCategory" required>
+							                        	<option value="">Select Category</option>
+							                        </select>
+												  	<input type="hidden" id="txtCatId" name="txtCatId"/>
+							                    </div>
+							                </div>
+						                </div>
+						                 <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="drpStatusType">Type</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <select class="form-control selectpicker"" id="drpStatusType" name="drpStatusType">
+							                        	<option value="1">Text</option>
+							                        	<option value="2">Image</option>
+							                        	<option value="3">Video</option>
+							                        </select>
+												  	<input type="hidden" id="txtCategoryName" name="txtCategoryName"/>
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group typeText">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtMessage">Message</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                    	<textarea class="form-control" rows="5" id="txtMessage" name="txtMessage" placeholder="Message..."></textarea>
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group typeText">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtColorCode">Color</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                    	<div class="row">
+								                    	<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+								                    		<input type="text" class="form-control" id="txtColorCode" name="txtColorCode" value="#000000" />
+								                    	</div>
+								                    	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								                        	<input type="color" id="txtColor" name="txtColor" style="width:100%;height:100%;" />
+								                        </div>
+								                     </div>
+							                    </div>
+							                </div>
+						                </div>
+						                 <div class="form-group typeImage">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtImage">Image</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="file" id="txtImage" name="txtImage" placeholder="Image"/><br/>
+							                        <span style="color:red;"> file size must be less than  or equal to 1mb </span>
+							                        <img class="img-thumbnail" alt="Profile Picture" id="imgStatusImage" width="100px" height="200px" src="../Images/users/sampleUserPhoto.png">
+							                    </div>
+							                </div>
+						                </div>
+						                 <div class="form-group typeVideo">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtVideo">Video</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+								                        <input type="file" id="txtVideo" name="txtVideo" placeholder="Video"/><br/>
+								                        <span style="color:red;"> file size must be less than  or equal to 5mb </span>
+							                        <!-- <span style="color:red;"> file size must be less than  or equal to 1mb </span> -->
+							                        <!-- <img class="img-thumbnail" alt="Profile Picture" id="imgStatusImage" width="100px" height="200px" src="../Images/users/sampleUserPhoto.png"> -->
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="rdbStatus">Status</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="radio" id="rdbStatus" name="rdbStatus" value="1" checked>Active &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							                        <input type="radio" id="rdbStatus" name="rdbStatus" value="0">Inactive	
+							                    </div>
+							                </div>
+						                </div>
+						                <!-- Modal Footer -->
+							            <div class="modal-footer">
+							                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+							                <button type="submit" class="btn btn-secondary" id="btnAddstatusModal">Add Status</button>
+							            </div>
+					                </form>
+					            </div>					            
+        					</div>
+        				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section="statusImageModal">
+		<div id="statusImageModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="statusImageModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+			    <div class="modal-content">
+			        <div class="modal-body">
+			            <img src="" class="img-responsive statusImageClass" width="100%">
+			        </div>
+			    </div>
+			</div>
+		</div>
+		</section>
+
+		<section="statusVideoModal">
+		<div id="statusVideoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="statusVideoModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog">
+			    <div class="modal-content">
+			        <div class="modal-body">
+			            <video width="100%" height="auto" autoplay="autoplay" controls="controls">
+  							<source src="" type="video/mp4" class="statusVideoClass">
+						</video>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		</section>
+		<div class="container">
+			<% include partials/message %>
+			<table id="tblStatusDetails" class="display wrap cell-border" style="width:100%">
+		        <thead>
+		            <tr>
+		                <th>Category</th>
+		                <th>Status Type</th>		                
+		                <th>Status</th>	
+		                <th>Edit</th>
+		                <th>Remove</th>
+		            </tr>
+		        </thead>
+		        <tbody><% for ( var i=0;i<statusDetails.length;i++ ) { %>
+		            <tr>
+		                <td><%= statusDetails[i].catName %></td>
+		                <%if( statusDetails[i].staType==1) { %>
+		                	<td><%= statusDetails[i].staMessage %></td>
+		                <% }else if(statusDetails[i].staType==2){ %>
+		                	<td><h6 class="statusImage" data-id="<%= statusDetails[i].staImage %>"><%= statusDetails[i].staImage %>
+		                	</h6></td>
+		            	<% }else { %>
+		            		<td><h6 class="statusVideo" data-id="<%= statusDetails[i].staVideo %>"><%= statusDetails[i].staVideo %>
+		                	</h6>
+		            	<% } %>		                
+		                <td><%= statusDetails[i].staStatus==1?"Active":"Inactive" %></td>
+		                <td><a href="#" data-id="<%=statusDetails[i].staId%>" class="btnStatusEdit" data-toggle="modal" data-target="#statusModal"><image src="../css/edit.png"></image></a></td>
+		                <td><a href="#" data-id="<%=statusDetails[i].staId%>" data-catid="<%=statusDetails[i].catId%>" data-langid="<%=statusDetails[i].langId%>" class="btnRemoveStatus"><image src="../css/remove.png"></image></a></td>
+		            </tr><% } %>
+		        </tbody>
+	    	</table>
+		</div>
+	</body>
+	<% include partials/script %>
+	<script type="text/javascript" src="../js/bootbox.min.js"></script>
+	<script type="text/javascript" src="../status.js"></script>	
+	</script>
+</html>

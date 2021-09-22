@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		<section="LogsDatatable">
+			<div class="container" style='margin-top: 2%;'>
+				<% include partials/message %>
+				<table id="tblLogsDetails" class="display wrap cell-border" style="width:100%">
+			        <thead>
+			            <tr>
+			            	<th>User</th>
+			            	<th>Task</th>
+			                <th>Status</th>
+			            </tr>
+			        </thead>
+			        <tbody><% for ( var i=0;i<logsDetails.length;i++ ) { %>		        	
+			            <tr>	
+			                <td><%= logsDetails[i].name %></td>		                
+			                <td><%= logsDetails[i].task %></td>
+			                <td><%= logsDetails[i].taskDate %></td>
+			            </tr><% } %>
+			        </tbody>
+		    	</table>
+			</div>
+		</section>
+	</body>
+	<% include partials/script %>
+	<script type="text/javascript" src="../users.js"></script>
+</html>

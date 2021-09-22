@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		<section="LanguageModalForam">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-right mb-3"><br>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#languageModal" id="btnAddLanguage">Add Language
+						</button>
+					</div>
+					<div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="languageModalLabel" aria-hidden="true">
+						 <div class="modal-dialog">
+        					<div class="modal-content">
+        						 <!-- Modal Header -->
+					            <div class="modal-header">
+					            	<h4 class="modal-title" id="languageModalLabel">
+					                    Language Form
+					                </h4>
+					                <button type="button" class="close" data-dismiss="modal">
+					                    <span aria-hidden="true">&times;</span>
+					                    <span class="sr-only">Close</span>
+					                </button>					                
+					            </div>
+					            <!-- Modal Body -->
+					            <div class="modal-body">					                
+					                <form class="form-horizontal" role="form" method="post" id="languageForm" action="">
+						                 <div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtLanguageName">Name</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="text" class="form-control" id="txtLanguageName" name="txtLanguageName" placeholder="Language Name" required />
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtDisplayLanguageName">Display Name
+						                    		</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="text" class="form-control" id="txtDisplayLanguageName" name="txtDisplayLanguageName" placeholder="Language Display Name" required />
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="rdbStatus">Status</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="radio" id="rdbStatus" name="rdbStatus" value="1" checked>Active&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							                        <input type="radio" id="rdbStatus" name="rdbStatus" value="0">Inactive	
+							                    </div>
+							                </div>
+						                </div>
+						                <!-- Modal Footer -->
+							            <div class="modal-footer">
+							                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+							                <button type="submit" class="btn btn-secondary" id="btnAddlanguageModal">Add Language</button>
+							            </div>
+					                </form>
+					            </div>					            
+        					</div>
+        				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section="LanguageDatatable">
+			<div class="container">
+				<% include partials/message %>
+				<table id="tblLanguageDetails" class="display wrap cell-border" style="width:100%">
+			        <thead>
+			            <tr>
+			                <th>Language</th>
+			                <th>Display Name</th>
+			                <th>Status</th>
+			                <th>Edit</th>
+			                <th>Remove</th>
+			            </tr>
+			        </thead>
+			        <tbody><% for ( var i=0;i<allLanguage.length;i++ ) { %>		        	
+			            <tr>
+			                <td><%= allLanguage[i].langName %></td>
+			                <td><%= allLanguage[i].langDisplayName %></td>
+			                <td><%= (allLanguage[i].langStatus==1?"Active":"Inactive") %></td>
+			                <td><a href="#" data-id="<%=allLanguage[i].langId%>" class="btnLanguageEdit" data-toggle="modal" data-target="#languageModal"><image src="../css/edit.png"></image></a></td>
+			                <td><a href="#" data-id="<%=allLanguage[i].langId%>" class="btnRemoveLanguage"><image src="../css/remove.png"></image></a></td>
+			            </tr><% } %>
+			        </tbody>
+		    	</table>
+			</div>
+		</section>
+	</body>
+	<% include partials/script %>
+	<script type="text/javascript" src="../language.js"></script>
+	<script type="text/javascript" src="../js/bootbox.min.js"></script>	
+</html>

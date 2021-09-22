@@ -1,0 +1,47 @@
+<!-- we have created same menu for all pages -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="navbar-nav mr-auto">
+         <li id="dashboard">
+         <a class="nav-link" href="/dashboard">Dashboard</a>
+         </li>
+         <li id="language">
+            <a class="nav-link" href="/language">Language</a>
+         </li>
+         <li id="category">
+            <a href="/category" class="nav-link">Category</a>
+         </li>
+         <li id="status">
+            <a class="nav-link" href="/status">Status</a>
+         </li>
+         <li id="application">
+            <a class="nav-link" href="/application">Apps</a>
+         </li>
+         <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown link
+            </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>             
+         </li> -->       
+      </ul>
+      <ul class="navbar-nav">
+        <% if(userRole =="Admin") { %>
+          <li id="users">
+               <a class="nav-link" href="/users">Users</a>
+           </li>
+           <li id="logs">
+               <a class="nav-link" href="/logs">Logs</a>
+           </li>         
+        <% } %>
+         <li class="nav-item">
+             <a class="nav-link" href="/logout">Logout</a>
+         </li>  
+      </ul>
+  </div>
+</nav>

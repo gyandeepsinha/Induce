@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		<section="CategoryModalForam">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12 text-right mb-3"><br>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#categoryModal" id="btnAddCategory">Add Category
+						</button>
+					</div>					
+					<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
+						 <div class="modal-dialog">
+        					<div class="modal-content">
+        						 <!-- Modal Header -->
+					            <div class="modal-header">
+					            	<h4 class="modal-title" id="categoryModalLabel">
+					                    Category Form
+					                </h4>
+					                <button type="button" class="close" data-dismiss="modal">
+					                    <span aria-hidden="true">&times;</span>
+					                    <span class="sr-only">Close</span>
+					                </button>					                
+					            </div>
+					            <!-- Modal Body -->
+					            <div class="modal-body">					                
+					                <form class="form-horizontal" role="form" method="post" id="categoryForm" enctype="multipart/form-data">
+						                 <div class="form-group">
+						                 	<div class="form-group">
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="drpLanguage">Language</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <select class="form-control selectpicker"" id="drpLanguage" name="drpLanguage">
+							                        	<% for (var i=0;i<alllanguage.length;i++ ) { %>
+													    	<option value="<%=alllanguage[i].langId%>"><%=alllanguage[i].langDisplayName%></option>
+													    <% } %>
+												  	</select>
+												  	<input type="hidden" id="txtLangDisplayName" name="txtLangDisplayName"/>
+							                    </div>
+							                </div>
+						                </div>
+						                 	<div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtCategory">Category</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="text" class="form-control" id="txtCategory" name="txtCategory" placeholder="Category" required />
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtDescription">Description</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                    	<textarea class="form-control" rows="3" id="txtDescription" name="txtDescription" placeholder="Description" required></textarea>
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="txtImage">Image</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="file" id="txtImage" name="txtImage" placeholder="Image" required/><br/>
+							                        <span style="color:red;"> file size must be less than  or equal to 1mb </span>
+							                    </div>
+							                </div>
+						                </div>
+						                <div class="form-group">
+						                    <div class="row">
+						                 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						                    		<label  class="col-sm-2 control-label" for="rdbStatus">Status</label>
+						                    	</div>
+							                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+							                        <input type="radio" id="rdbStatus" name="rdbStatus" value="1" checked>Active&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							                        <input type="radio" id="rdbStatus" name="rdbStatus" value="0">Inactive	
+							                    </div>
+							                </div>
+						                </div>
+						                <!-- Modal Footer -->
+							            <div class="modal-footer">
+							                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+							                <button type="submit" class="btn btn-secondary" id="btnAddCategoryModal">Add Category</button>
+							            </div>
+					                </form>
+					            </div>					            
+        					</div>
+        				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section="CategoryDatatable">
+			<div class="container">
+				<% include partials/message %>
+				<table id="tblCategoryDetails" class="display wrap cell-border" style="width:100%">
+			        <thead>
+			            <tr>
+			            	<th>Language</th>
+			                <th>Category</th>
+			                <th>Description</th>
+			                <th>Status</th>
+			                <th>Edit</th>
+			                <th>Remove</th>
+			            </tr>
+			        </thead>
+			        <tbody><% for ( var i=0;i<allCategory.length;i++ ) { %>		        	
+			            <tr>
+			                <td><%= allCategory[i].langDisplayName %></td>			            	
+			                <td><%= allCategory[i].catName %></td>
+			                <td><%= allCategory[i].catDescription %></td>
+			                <td><%= (allCategory[i].catStatus==1?"Active":"Inactive") %></td>
+			                <td><a href="#" data-id="<%=allCategory[i].catId%>" class="btnCategoryEdit" data-toggle="modal" data-target="#categoryModal"><image src="../css/edit.png"></image></a></td>
+			                <td><a href="#" data-id="<%=allCategory[i].catId%>" class="btnremoveCategory"><image src="../css/remove.png"></image></a></td>
+			            </tr><% } %>
+			        </tbody>
+		    	</table>
+			</div>
+		</section>
+	</body>
+	<% include partials/script %>
+	<script type="text/javascript" src="../category.js"></script>
+	<script type="text/javascript" src="../js/bootbox.min.js"></script>
+	<!-- <script type="text/javascript">
+		$("#successAlert").fadeTo(2000, 1500).slideUp(1500, function(){
+    			$("#successAlert").slideUp(1500);
+		});
+	</script> -->
+</html>

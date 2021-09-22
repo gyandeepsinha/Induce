@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <% include partials/head %>
+      <style type="text/css">
+      	.tiles{
+      		border:1px solid #E4E4E4;
+      		border-radius: 5px;
+      		text-align: center;
+      		font-size: 20px;
+      	}
+      </style>
+   </head>
+   <body>
+      <% include partials/menu %>
+      <section="dashBoardSection">
+      	<div class="container-fluid">
+			<div class="row">
+				<div class="tiles col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<label>Languages</label>
+					<div> <a href="/language"><%= result[0].LangCount %></a> </div>
+				</div>
+				<div class="tiles col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<label>Category</label>
+					<div> <a href="/category"><%= result[0].catCount %></a> </div>
+				</div>
+				<div class="tiles col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<label>Status</label>
+					<div> <a href="/status"><%= result[0].staCount %></a> </div>
+				</div>
+				<div class="tiles col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					<label>Applications</label>
+					<div> <a href="/application"><%= dashResultApp[0].appCount%></a> </div>
+				</div>
+			</div>
+		</div>
+      </section>
+   </body>
+      <% include partials/script %>
+</html>
